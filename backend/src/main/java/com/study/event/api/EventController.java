@@ -1,6 +1,7 @@
 package com.study.event.api;
 
 import com.study.event.domain.dto.request.EventCreate;
+import com.study.event.domain.dto.response.EventResponse;
 import com.study.event.domain.entity.Event;
 import com.study.event.service.EventService;
 import lombok.RequiredArgsConstructor;
@@ -22,11 +23,12 @@ public class EventController {
     // 전체 조회 요청
     @GetMapping
     public ResponseEntity<?> getList() {
-        List<Event> events = eventService.getEvents();
+        List<EventResponse> events = eventService.getEvents();
 
         return ResponseEntity.ok().body(events);
     }
-
+    
+    // 생성 요청
     @PostMapping
     public ResponseEntity<?> create(@RequestBody EventCreate dto) {
         eventService.saveEvent(dto);
