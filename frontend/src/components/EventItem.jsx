@@ -1,23 +1,24 @@
 import styles from './EventItem.module.scss';
-import {Link, useNavigate, useParams} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 const EventItem = ({ event }) => {
   const {
+    id,
     title,
     desc: description,
     'img-url': image,
     'start-date': date,
   } = event;
 
-  const {eventId} = useParams();
-
   // 새로고침 없이 페이지 이동
   const navigate = useNavigate();
 
   const deleteHandler = e => {
+    if (!confirm('정말 삭제하시겠습니까?')) return;
+
     // 서버에 DELETE 요청, 즉시 실행 함수
     (async () => {
-      const response = await fetch(`http://localhost:9000/api/events/${eventId}`, {
+      const response = await fetch(`http://localhost:9000/api/events/${id}`, {
         method: 'DELETE'
       });
 
