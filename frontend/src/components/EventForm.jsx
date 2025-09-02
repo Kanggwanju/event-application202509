@@ -1,5 +1,5 @@
 import styles from './EventForm.module.scss';
-import {useNavigate} from 'react-router-dom';
+import {Form, useNavigate} from 'react-router-dom';
 
 const EventForm = () => {
 
@@ -37,11 +37,14 @@ const EventForm = () => {
     })();
   };
 
+  // route 설정에 있는 action 함수를 트리거하려면 `Form`이라는 컴포넌트가 필요하다.
+  // 필수 속성으로 method 속성을 지정해야 함.
   return (
-    <form
+    <Form
+      method='POST'
       className={styles.form}
       noValidate
-      onSubmit={handleSubmit}
+      // onSubmit={handleSubmit}
     >
       <p>
         <label htmlFor='title'>Title</label>
@@ -83,7 +86,7 @@ const EventForm = () => {
         <button type='button'>Cancel</button>
         <button>Save</button>
       </div>
-    </form>
+    </Form>
   );
 };
 
