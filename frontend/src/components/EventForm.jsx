@@ -1,12 +1,12 @@
 import styles from './EventForm.module.scss';
 import {Form, useNavigate} from 'react-router-dom';
 
-const EventForm = () => {
+const EventForm = ({ method }) => {
 
   // 새로고침 없이 페이지 이동
   const navigate = useNavigate();
 
-  const handleSubmit = e => {
+  /*const handleSubmit = e => {
     e.preventDefault();
     // form에 입력한 값 가져오기
     const formData = new FormData(e.target);
@@ -35,13 +35,13 @@ const EventForm = () => {
         navigate('/events');
       }
     })();
-  };
+  };*/
 
   // route 설정에 있는 action 함수를 트리거하려면 `Form`이라는 컴포넌트가 필요하다.
   // 필수 속성으로 method 속성을 지정해야 함.
   return (
     <Form
-      method='POST'
+      method={method}
       className={styles.form}
       noValidate
       // onSubmit={handleSubmit}
@@ -83,8 +83,8 @@ const EventForm = () => {
         />
       </p>
       <div className={styles.actions}>
-        <button type='button'>Cancel</button>
-        <button>Save</button>
+        <button type='button' onClick={() => navigate('..')}>Cancel</button>
+        <button>{method === 'POST' ? 'Save' : 'Update'}</button>
       </div>
     </Form>
   );
