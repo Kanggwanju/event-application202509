@@ -1,5 +1,5 @@
 import styles from './EventItem.module.scss';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, useSubmit} from 'react-router-dom';
 
 const EventItem = ({ event }) => {
   const {
@@ -10,11 +10,18 @@ const EventItem = ({ event }) => {
     'start-date': date,
   } = event;
 
+  // Form 컴포넌트 없이 action 함수를 작동시키는 법
+  const submit = useSubmit();
+
+
   // 새로고침 없이 페이지 이동
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const deleteHandler = e => {
-    if (!confirm('정말 삭제하시겠습니까?')) return;
+    // Form 없이 action 함수 트리거 - 낙관적 업데이트
+    submit(null, {method:'DELETE'});
+
+    /*if (!confirm('정말 삭제하시겠습니까?')) return;
 
     // 서버에 DELETE 요청, 즉시 실행 함수
     (async () => {
@@ -26,7 +33,7 @@ const EventItem = ({ event }) => {
         // 목록 페이지로 리다이렉트
         navigate('/events');
       }
-    })();
+    })();*/
   };
 
   return (
