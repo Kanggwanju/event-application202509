@@ -6,3 +6,6 @@
 3. `+` 버튼 클릭 후 모듈 가져오기(Import module)
 4. 이 프로젝트의 /backend/build.gradle 선택
 5. 확인 누르고 빌드 기다린 후 백엔드 실행
+
+## DB 생성 쿼리문
+`CREATE DATABASE eventdb;`
