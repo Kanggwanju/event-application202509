@@ -8,7 +8,7 @@ const SignUpForm = () => {
 
   const [enteredEmail, setEnteredEmail] = useState();
   // 현재 어떤 스텝인지 확인
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   // 프로그레스바 노출 여부
   const [isNext, setIsNext] =useState(false);
 
