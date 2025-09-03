@@ -34,7 +34,7 @@ public class EventUser {
     @Builder.Default
     private Role role = Role.COMMON; // 권한, 기본 권한은 COMMON
 
-    @CreationTimestamp
+//    @CreationTimestamp
     private LocalDateTime createdAt;
 
     // 이메일 인증을 완료했는지 여부
