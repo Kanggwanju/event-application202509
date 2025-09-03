@@ -3,7 +3,7 @@ import styles from './SignUpForm.module.scss'
 import {AUTH_API_URL} from '../../config/host-config.js';
 import { debounce } from 'lodash';
 
-const EmailInput = () => {
+const EmailInput = ({ onSuccess }) => {
 
   const emailRef = useRef();
 
@@ -33,6 +33,8 @@ const EmailInput = () => {
       const { isDuplicate, message } = await response.json();
       if (isDuplicate) {
         setError(message);
+      } else {
+        onSuccess();
       }
     })();
 
