@@ -76,5 +76,11 @@ export const loginAction = async ({ request }) => {
     // 그럼 action 함수를 처리하는 컴포넌트는 useActionData라는 훅으로 사용 가능
     return data.message;
   }
+
+  // 로그인에 성공했을 때 - 토큰을 저장
+  localStorage.setItem('userData', JSON.stringify(data));
+
+  return redirect('/');
+
 };
 
