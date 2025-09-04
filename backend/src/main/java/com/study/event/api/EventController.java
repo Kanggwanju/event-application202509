@@ -2,15 +2,13 @@ package com.study.event.api;
 
 import com.study.event.domain.dto.request.EventCreate;
 import com.study.event.domain.dto.response.EventDetailResponse;
-import com.study.event.domain.dto.response.EventResponse;
-import com.study.event.domain.entity.Event;
 import com.study.event.service.EventService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -30,11 +28,14 @@ public class EventController {
 
         return ResponseEntity.ok().body(events);
     }
-    
+
     // 생성 요청
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody EventCreate dto) {
-        eventService.saveEvent(dto);
+    public ResponseEntity<?> create(
+            @RequestBody EventCreate dto,
+            @AuthenticationPrincipal String email
+    ) {
+        eventService.saveEvent(dto, email);
 
         return ResponseEntity.ok().body(Map.of(
                 "message", "이벤트가 정상 등록되었습니다."
