@@ -6,7 +6,7 @@ import EventDetailPage from '../pages/EventDetailPage.jsx';
 import EventLayout from '../layouts/EventLayout.jsx';
 import {eventDetailLoader} from '../loader/events-loader.js';
 import NewEventPage from '../pages/NewEventPage.jsx';
-import {deleteAction, saveAction as manipulateAction} from '../loader/events-actions.js';
+import {deleteAction, saveAction as manipulateAction, loginAction} from '../loader/events-actions.js';
 import EditPage from '../pages/EditPage.jsx';
 import HomeLayout from '../layouts/HomeLayout.jsx';
 import WelcomePage from '../pages/WelcomePage.jsx';
@@ -24,7 +24,8 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <WelcomePage />
+            element: <WelcomePage />,
+            action: loginAction
           },
           {
             path: '/sign-up',
