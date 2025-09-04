@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from 'react';
 import {debounce} from 'lodash';
 import {AUTH_API_URL} from '../../config/host-config.js';
 
-const VerificationInput = ({ email }) => {
+const VerificationInput = ({ email, onSuccess }) => {
 
   // 완성된 인증코드를 상태관리
   const [codes, setCodes] = useState(['', '', '', '']);
@@ -54,6 +54,7 @@ const VerificationInput = ({ email }) => {
     }
     // 검증 성공시 - 다음 스텝으로 이동하는 신호 올려보내기
     setError('');
+    onSuccess();
 
   }, 1000);
 
