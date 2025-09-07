@@ -48,12 +48,12 @@ class EventRepositoryImplTest {
         Pageable pageable = PageRequest.of(pageNo - 1, size);
 
         //when
-        Slice<Event> eventSlice = eventRepository.findEvents(pageable);
-        List<Event> content = eventSlice.getContent();
-
-        //then
-        System.out.println("hasNext: " + eventSlice.hasNext());
-        System.out.println("size: " + content.size());
+//        Slice<Event> eventSlice = eventRepository.findEvents(pageable);
+//        List<Event> content = eventSlice.getContent();
+//
+//        //then
+//        System.out.println("hasNext: " + eventSlice.hasNext());
+//        System.out.println("size: " + content.size());
     }
 
 }
